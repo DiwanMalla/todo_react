@@ -1,19 +1,9 @@
 {
   "tasks": [
     {
-      "title": "hello",
-      "category": "how",
+      "title": "sdad",
+      "category": "daw",
       "id": 1
-    },
-    {
-      "title": "yes",
-      "category": "hello",
-      "id": 2
-    },
-    {
-      "title": "hnn",
-      "category": "hj",
-      "id": 3
     }
   ]
 }
