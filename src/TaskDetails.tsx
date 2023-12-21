@@ -9,7 +9,7 @@ const TaskDetails = () => {
   const { id } = useParams<Tasks>();
   const [tasks, setTasks] = useState<Tasks>();
   useEffect(() => {
-    let url = `http://localhost:5000/tasks`;
+    let url = `https://65842a564d1ee97c6bcf225e.mockapi.io/api/v1/todo`;
     fetch(url)
       .then((res) => {
         if (!res.ok) {

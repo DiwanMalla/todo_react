@@ -12,7 +12,7 @@ const TaskList = () => {
   };
 
   const handleDelete = (taskId: any) => {
-    fetch(`http://localhost:5000/tasks/${taskId}`, {
+    fetch(`https://65842a564d1ee97c6bcf225e.mockapi.io/api/v1/todo/${taskId}`, {
       method: "DELETE",
     }).then(() => {
       if (dependency) {
@@ -27,24 +27,31 @@ const TaskList = () => {
     e.preventDefault();
     const task = { title, category };
     setTimeout(() => {
-      fetch("  http://localhost:5000/tasks", {
+      fetch("  https://65842a564d1ee97c6bcf225e.mockapi.io/api/v1/todo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(task),
-      }).then(() => {
-        if (dependency) {
-          setDependency(false);
-        } else {
-          setDependency(true);
-        }
-        console.log("new task added");
-        setShowInput(false);
-      });
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then(() => {
+          if (dependency) {
+            setDependency(false);
+          } else {
+            setDependency(true);
+          }
+          console.log("new task added");
+          setShowInput(false);
+        });
     });
   };
 
   useEffect(() => {
-    let url = `http://localhost:5000/tasks`;
+    let url = `https://65842a564d1ee97c6bcf225e.mockapi.io/api/v1/todo`;
     fetch(url)
       .then((res) => {
         if (!res.ok) {
